@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mongo1:
+    image: mongo:latest
+    container_name: mongo_node1
+    ports:
+      - "27017:27017" # 📍 Puerto para conectar desde Python
+    networks:
+      - mongo-network
+  mongo2:
+    image: mongo:latest
+    container_name: mongo_node2
+    ports:
+      - "27018:27017" # 📍 Puerto diferente para el segundo nodo
+    networks:
+      - mongo-network
+networks:
+  mongo-network:
+    driver: bridge
